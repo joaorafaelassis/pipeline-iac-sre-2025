@@ -1,0 +1,24 @@
+steps:
+  - id: 'terraform init'
+    name: 'hashicorp/terraform:1.11.2'
+    entrypoint: 'sh'
+    args:
+    - '-c'
+    - |
+      ./run-all.sh init ${_LOCATION}
+  - id: 'terraform plan'
+    name: 'hashicorp/terraform:1.11.2'
+    entrypoint: 'sh'
+    args:
+    - '-c'
+    - |
+      ./run-all.sh plan ${_LOCATION}
+  - id: 'terraform apply/destroy'
+    name: 'hashicorp/terraform:1.11.2'
+    entrypoint: 'sh'
+    args:
+    - '-c'
+    - |
+      ./run-all.sh ${_COMMAND} ${_LOCATION}
+options:
+  logging: CLOUD_LOGGING_ONLY

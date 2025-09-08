@@ -1,0 +1,9 @@
+org:
+  project: "assis-sandbox-resources-423612"
+  region: "us-central1"
+  zone: "us-central1-a"
+  state_bucket: "pipeline-iac-sre-2025"
+  api_list:
+    - "servicenetworking.googleapis.com"
+    - "sqladmin.googleapis.com"
+    - "iam.googleapis.com"
