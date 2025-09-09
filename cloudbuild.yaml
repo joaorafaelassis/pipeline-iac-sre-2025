@@ -1,4 +1,17 @@
 steps:
+  - id: 'terrascan'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |-
+      curl -L https://github.com/tenable/terrascan/releases/download/v1.19.9/terrascan_1.19.9_Linux_x86_64.tar.gz > terrascan.tar.gz
+      tar -xf terrascan.tar.gz terrascan
+      install terrascan /usr/local/bin
+      cd org01/env/${_LOCATION}
+      terrascan init -l debug
+      terrascan scan
+      echo Last error code: $?
   - id: 'terraform init'
     name: 'hashicorp/terraform:1.11.2'
     entrypoint: 'sh'
