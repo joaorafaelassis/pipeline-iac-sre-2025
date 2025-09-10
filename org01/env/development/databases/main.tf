@@ -9,7 +9,7 @@ data "terraform_remote_state" "vpc" {
 
 locals {
   env = yamldecode(file("../env.yaml")).env
-  #mock value for private_network
+  #mock value for private_network.
   private_network = try(data.terraform_remote_state.vpc.outputs.network_self_link, "https://www.googleapis.com/compute/v1/projects/mock-project/global/networks/mock-vpc")
 }
 
